@@ -76,9 +76,9 @@ pub async fn serve(me: Peer) {
                                 cc_tmp.push(connected_host);
 
                                 let msg = String::from_utf8_lossy(&buffer[..n]);
-                                handle_message(msg.to_string());
+                                let msg = handle_message(msg.to_string());
 
-                                if let Err(e) = socket.write_all(b"1").await {
+                                if let Err(e) = socket.write_all(msg.as_bytes()).await {
                                     println!("Failed saying {}", e);
                                 }
                             }
@@ -104,11 +104,11 @@ pub async fn client(me: Peer) {
 // 1 -> ACK
 // 0 -> NO
 // 1024 -> SYN
-fn handle_message(msg: String) {
+fn handle_message(msg: String) -> String {
     if msg.contains("1024") {
-        println!("Yay");
+        return "1".to_string();
     } else {
-        println!("No");
+        return "0".to_string();
     }
 }
 
