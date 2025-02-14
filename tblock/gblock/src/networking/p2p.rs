@@ -38,11 +38,12 @@ impl Local {
     }
 }
 
-pub async fn start(me: Peer) {
+pub async fn serve(me: Peer) {
     let addr = format!("{}:{}", &me.addr, &me.port);
     println!("Opening listener at {}", addr);
     let listener = TcpListener::bind(addr).await.expect("Failed to bind");
-    let mut this = Local::new(vec![], vec![]);
+    let mut know_hosts: Vec<Host> = Vec::new();
+    let mut connected_hosts: Vec<Host> = Vec::new();
 
     loop {
         match listener.accept().await {
@@ -50,7 +51,7 @@ pub async fn start(me: Peer) {
                 println!("--");
                 println!("Got connection {:?}, {:?}", socket, addr);
 
-                tokio::spawn(async move {
+                let server_handle = tokio::spawn(async move {
                     let mut buffer = [0; 1024];
 
                     loop {
@@ -58,27 +59,9 @@ pub async fn start(me: Peer) {
                             Ok(0) => {
                                 println!("Building connection profile...");
                                 let profile = Host { ip: addr.to_string(), id: 0 };
-                                // Push into Local
-                                
-                                match handle_init_connection() {
-                                    Ok() => {
-                                        println!("Handled new connection");
-                                    }
-                                    Err(e) => {
-                                        println!("Failed saying {}", e);
-                                    }
-                                }
-                                return;
+                                return
                             }
-                            Ok(n) => {
-                                match handle_connection_message() {
-                                    Ok() => {
-                                        println!("Handled message");
-                                    }
-                                    Err(e) => {
-                                        println!("Failed saying {}", e);
-                                    }
-                                } 
+                            Ok(n) => { 
                                 let msg = String::from_utf8_lossy(&buffer[..n]);
                                 println!("Got {} from {}", msg, addr);
 
@@ -99,12 +82,3 @@ pub async fn start(me: Peer) {
         }
     }
 }
-
-fn handle_init_connection() -> Result<(), Box<dyn Error>> {
-    Ok(())
-}
-
-fn handle_connection_message(msg: String) -> Result<(), Box<dyn Error>> {
-    Ok(())
-}
-

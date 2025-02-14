@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::result::Result;
-use crate::networking::p2p::{start, Peer};
+use crate::networking::p2p::{serve, Peer};
 
 mod networking;
 mod blockchain;
@@ -26,7 +26,7 @@ async fn run() -> Result<(), Box<dyn Error>>{
         addr: "127.0.0.1".to_string(),
         port: "8080".to_string(),
     };
-    start(peer).await;
+    serve(peer).await;
     Ok(())
 }
 
