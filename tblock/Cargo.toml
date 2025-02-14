@@ -5,5 +5,6 @@ edition = "2021"
 
 [dependencies]
 gblock = { path = "./gblock" }
+log = "0.4.25"
 tokio = { version = "1.43.0", features = ["full"] }
 tokio-util = "0.6"

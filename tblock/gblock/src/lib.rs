@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::result::Result;
-use crate::networking::p2p::{serve, Peer};
+use crate::networking::p2p::{serve, client, Peer};
 
 mod networking;
 mod blockchain;

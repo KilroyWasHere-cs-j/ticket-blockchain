@@ -2,37 +2,37 @@ use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Ticket {
-    fname: String, // First name
-    lname: String, // Last name
-    sname: String, // Show name
-    tname: String, // Theater name
-    sLet: char, // Seat letter
-    sNum: i64, // Seat number
-    sAcom: String, // Special accomidations
+    f_name: String, // First name
+    l_name: String, // Last name
+    s_name: String, // Show name
+    t_name: String, // Theater name
+    s_let: char, // Seat letter
+    s_num: i64, // Seat number
+    s_acom: String, // Special accomidations
 }
 
 impl Ticket {
     pub fn new() -> Self {
         Ticket {
-            fname: "".to_string() ,
-            lname: "".to_string(),
-            sname: "".to_string(),
-            tname: "".to_string(),
-            sLet: 'a',
-            sNum: 0,
-            sAcom: "No acoms needed".to_string(),
+            f_name: "".to_string() ,
+            l_name: "".to_string(),
+            s_name: "".to_string(),
+            t_name: "".to_string(),
+            s_let: 'a',
+            s_num: 0,
+            s_acom: "No acoms needed".to_string(),
         }
     }
 
-    pub fn generate_new(fname: String, lname: String, sname: String, tname: String, sLet: char, sNum: i64, sAcom: String) -> Ticket {
+    pub fn generate_new(f_name: String, l_name: String, s_name: String, t_name: String, s_let: char, s_num: i64, s_acom: String) -> Ticket {
         Ticket {
-            fname,
-            lname,
-            sname,
-            tname,
-            sLet,
-            sNum,
-            sAcom,
+            f_name,
+            l_name,
+            s_name,
+            t_name,
+            s_let,
+            s_num,
+            s_acom,
         }
     }
 }

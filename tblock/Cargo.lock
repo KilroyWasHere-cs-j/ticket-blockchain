@@ -172,6 +172,7 @@ name = "gblock"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "log",
  "serde",
  "sha256",
  "tokio",
@@ -470,6 +471,7 @@ name = "tblock"
 version = "0.1.0"
 dependencies = [
  "gblock",
+ "log",
  "tokio",
  "tokio-util",
 ]
