@@ -13,30 +13,26 @@ pub struct Peer {
     pub port: String,
 }
 
-struct Host {
-    id: i64,
-    ip: String,
-}
-
-struct Local {
-    know_hosts: Vec<Host>,
-    connected_hosts: Vec<Host>,
-}
-
-impl Host {
-    fn new(id: i64, ip: String) -> Self {
-        Host {
+impl Peer {
+    pub fn new(id: i64, addr: String, port: String) -> Self {
+        Peer {
             id,
-            ip
+            addr,
+            port
         }
     }
 }
 
-impl Local {
-    fn new(know_hosts: Vec<Host>, connected_hosts: Vec<Host>) -> Self {
-        Local {
-            know_hosts: vec![],
-            connected_hosts: vec![],
+struct Host {
+    id: String,
+    ip: i64,
+}
+
+impl Host {
+    pub fn new(id: String, ip: i64) -> Self {
+        Host {
+            id,
+            ip
         }
     }
 }
@@ -70,8 +66,7 @@ pub async fn serve(me: Peer) {
                             }
                             Ok(n) => {
                                 let mut h_tmp = hosts_cloned.lock().await;
-                                let connected_host = Host { ip: addr.to_string(), id: (*h_tmp + 1) };
-
+                                let connected_host = Host::new(addr.to_string(), (*h_tmp + 1));
                                 let mut cc_tmp = connected_hosts_clone.lock().await; 
                                 cc_tmp.push(connected_host);
 
@@ -105,10 +100,7 @@ pub async fn client(me: Peer) {
 // 0 -> NO
 // 1024 -> SYN
 fn handle_message(msg: String) -> String {
-    if msg.contains("1024") {
-        return "1".to_string();
-    } else {
-        return "0".to_string();
-    }
+    println!("{}", msg);
+    msg
 }
 

@@ -25,5 +25,13 @@ impl Block {
             hash,
             nounce
         }
+    } 
+
+    pub fn generate_hash(to_hash: String) -> String {
+        "hashed".to_string()
+    }
+
+    pub fn f_print() {
+
     }
 }

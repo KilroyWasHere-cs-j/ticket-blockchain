@@ -1,37 +1,27 @@
 use std::error::Error;
 use std::result::Result;
 use crate::networking::p2p::{serve, client, Peer};
+use crate::blockchain::chain::BlockChain;
+use crate::ticket::Ticket;
+use crate::blockchain::block::Block;
 
-mod networking;
-mod blockchain;
+pub mod networking;
+pub mod blockchain;
 pub mod ticket;
+pub mod codes;
 
-pub fn init() -> Result<(), Box<dyn Error>> {
-    Ok(())
+/// Helper to build blocks
+pub fn build_block(fname: String, lname: String, sname: String, tname: String, rlet: char, snum: i64, acom: String) -> Block {
+    let mut tickets = Vec::new();
+
+    tickets.push(Ticket::generate_new(fname, lname, sname, tname, rlet, snum, acom));
+
+    Block::new(1, tickets, "gen_has".to_string(), 45)
 }
 
-pub async fn spinup() -> Result<(), Box<dyn Error>>{
-    println!("Spinning up node...");
-    println!("Switching to running...");
-    run().await?;
-    Ok(())
-}
+// Helper to populate the blockchain only used in testing
+fn pop_chain(blockchain: BlockChain) {
 
-async fn run() -> Result<(), Box<dyn Error>>{
-    let spindown = false;
-    println!("Node running");
-
-    let peer = Peer {
-        id: 1,
-        addr: "127.0.0.1".to_string(),
-        port: "8080".to_string(),
-    };
-    serve(peer).await;
-    Ok(())
-}
-
-fn spindown() {
-    todo!("Shuts the system down");
 }
 
 #[cfg(test)]

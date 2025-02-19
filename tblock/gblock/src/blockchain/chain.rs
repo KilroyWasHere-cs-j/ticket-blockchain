@@ -2,6 +2,7 @@ use serde::{Serialize, Deserialize};
 use crate::blockchain::block::Block;
 use crate::ticket::Ticket;
 
+#[derive(Debug)]
 pub struct BlockChain {
     pub chain: Vec<Block>,
 }
@@ -14,4 +15,12 @@ impl BlockChain {
             chain: vec![genesis_block] 
         }
     }
+
+    pub fn add(&mut self, block: Block) {
+        let _ = &self.chain.push(block);
+    }
+
+    pub fn validate(&self, hash: String) -> bool{
+        true
+    } 
 }
