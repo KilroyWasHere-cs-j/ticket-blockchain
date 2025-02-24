@@ -4,7 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+chrono = "0.4.39"
 gblock = { path = "./gblock" }
+hex = "0.4.3"
 log = "0.4.25"
+sha256 = "1.5.0"
 tokio = { version = "1.43.0", features = ["full"] }
 tokio-util = "0.6"

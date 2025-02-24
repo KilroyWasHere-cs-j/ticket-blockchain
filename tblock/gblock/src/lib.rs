@@ -12,11 +12,8 @@ pub mod codes;
 
 /// Helper to build blocks
 pub fn build_block(fname: String, lname: String, sname: String, tname: String, rlet: char, snum: i64, acom: String) -> Block {
-    let mut tickets = Vec::new();
-
-    tickets.push(Ticket::generate_new(fname, lname, sname, tname, rlet, snum, acom));
-
-    Block::new(1, tickets, "gen_has".to_string(), 45)
+    let ticket = Ticket::generate_new(fname, lname, sname, tname, rlet, snum, acom);
+    Block::new(1, ticket, "gen_has".to_string(), 45)
 }
 
 // Helper to populate the blockchain only used in testing
