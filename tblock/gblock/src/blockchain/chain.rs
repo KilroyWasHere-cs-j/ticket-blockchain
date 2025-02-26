@@ -10,6 +10,12 @@ pub struct BlockChain {
     pub chain: VecDeque<Block>,
 }
 
+//impl std::fmt::Display for Block {
+//    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+//        write!(f, "{}", &self.chain)
+//    }
+//}
+
 impl BlockChain {
     pub fn new() -> Self {
         let genesis_chain = Ticket::new();

@@ -1,0 +1,11 @@
+/home/gabrielt/Git/ticket-blockchain/tblock/target/debug/deps/libthiserror-b5feebce6bda7f6d.rmeta: /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/lib.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/aserror.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/display.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/provide.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/var.rs
+
+/home/gabrielt/Git/ticket-blockchain/tblock/target/debug/deps/libthiserror-b5feebce6bda7f6d.rlib: /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/lib.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/aserror.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/display.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/provide.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/var.rs
+
+/home/gabrielt/Git/ticket-blockchain/tblock/target/debug/deps/thiserror-b5feebce6bda7f6d.d: /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/lib.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/aserror.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/display.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/provide.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/var.rs
+
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/lib.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/aserror.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/display.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/provide.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-2.0.11/src/var.rs:

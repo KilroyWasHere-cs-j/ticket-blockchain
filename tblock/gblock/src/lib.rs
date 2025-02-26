@@ -4,6 +4,7 @@ use crate::networking::p2p::{serve, client, Peer};
 use crate::blockchain::chain::BlockChain;
 use crate::ticket::Ticket;
 use crate::blockchain::block::Block;
+use chrono::Utc;
 
 pub mod networking;
 pub mod blockchain;
@@ -17,8 +18,12 @@ pub fn build_block(fname: String, lname: String, sname: String, tname: String, r
 }
 
 // Helper to populate the blockchain only used in testing
-fn pop_chain(blockchain: BlockChain) {
-
+pub fn pop_chain(mut blockchain: BlockChain) {
+    let timestamp = Utc::now();
+    
+    let bloc = build_block("Gabriel".to_string(), "Tower".to_string(), "Ides of March".to_string(), "The Theater Project".to_string(), 'a', 10, "None".to_string());
+ 
+    let action = blockchain.add_block(bloc);
 }
 
 #[cfg(test)]

@@ -5,9 +5,16 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.39"
+config = "0.15.8"
 gblock = { path = "./gblock" }
 hex = "0.4.3"
 log = "0.4.25"
 sha256 = "1.5.0"
 tokio = { version = "1.43.0", features = ["full"] }
 tokio-util = "0.6"
+serde = { version = "1.0.218", features = ["derive"] }
+clap = { version = "4.5.31", features = ["cargo", "derive"] }
+lazy_static = "1.5.0"
+ratatui = "0.29.0"
+crossterm = "0.28.1"
+indicatif = "0.17.11"
