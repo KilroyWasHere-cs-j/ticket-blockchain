@@ -1,9 +1,8 @@
 use gblock;
-use std::thread;
+use std::{thread, time};
 use chrono::Utc;
 use gblock::build_block;
 use gblock::blockchain::chain::BlockChain;
-use gblock::networking::p2p::{serve, Peer};
 use config::{Config, File};
 use serde::Deserialize;
 use clap::{arg, command, value_parser, ArgAction, Command, Parser};
@@ -11,24 +10,25 @@ use lazy_static::lazy_static;
 use indicatif::ProgressBar;
 use std::time::Duration;
 use crossterm::event::{self, Event};
-use ratatui::{text::Text, Frame};
 use std::fs;
 use std::io::prelude::*;
-use std::sync::mpsc;
-use std::sync::Mutex;
 use std::sync::Arc;
+use sysinfo::{Pid, Process, System};
+use sysinfo::get_current_pid;
+use std::sync::Mutex;
+use std::borrow::Cow;
+
+mod utils;
+use crate::utils::{info, sucess};
 
 lazy_static! {
     
 }
 
-struct SharedData { 
-    chain_pop: i32,
-}
-
 #[derive(Debug, Deserialize)]
-struct AppConfig {
-    addr: String,
+struct AppConfig<'a> {
+    #[serde(borrow)]
+    addr: Cow<'a, str>,
     port: usize,
     ascii_art_path: String,
 }
@@ -36,6 +36,7 @@ struct AppConfig {
 #[derive(Parser)]
 #[command(version, about, long_about = None)]
 struct Cli {
+    ui: u8,
     debug: u8,
     name: Option<String>,
     config_path: Option<String>,
@@ -43,24 +44,33 @@ struct Cli {
 
 #[tokio::main]
 async fn main() {
+    let mut debug: u8 = 0;
+    let mut ui: u8 = 0;
+
     let cli = Cli::parse();
     
     if let Some(name) = cli.name.as_deref() {
-        println!("{name}");
+        info(name);
     }
 
     if let Some(config_path) = cli.config_path.as_deref() {
-        println!("{config_path}");
+        info(config_path);
+    }
+
+    match cli.ui {
+        0 => { ui = 0; info("UI will not be rendered"); },
+        1 => { ui = 1; info("UI will be rendered"); },
+        _ => { ui = 222; info("Yah that's not an option"); },
     }
 
     match cli.debug {
-        0 => println!("Debug mode is off"),
-        1 => println!("Debug mode is kind of on"),
-        2 => println!("Debug mode is on"),
-        _ => println!("Don't be crazy"),
+        0 => { debug = 0; info("Debug mode is off"); },
+        1 => { debug = 1; info("Debug mode is kinda on"); },
+        2 => { debug = 2; info("Debug mode is on"); },
+        _ => { debug = 255; info("Bro what you try'n do"); },
     }
 
-    println!("Loading in config...");
+    info("Loading in config...");
 
     let config = Config::builder()
         .add_source(File::with_name("config.toml"))
@@ -69,40 +79,41 @@ async fn main() {
     
     let config: AppConfig = config.try_deserialize().unwrap();
 
-    println!("Config loaded");
-
-
-
+    info("Config loaded");
+    
+    thread::sleep(time::Duration::from_millis(1000));
+   
     // Setup and config is done
     
-    let me = Peer::new(0, config.addr, config.port.to_string());
-    let mut blockchain = BlockChain::new();
-    let (tx, rx) = mpsc::channel(); 
+    let blockchain = Arc::new(Mutex::new(BlockChain::new()));
 
-    let contents = fs::read_to_string(config.ascii_art_path)
-        .expect("Should have been able to read the file");
 
-    println!("{}", contents);
-    println!("Initalizing...");
-    
-    //let mut terminal = ratatui::init();
+    match fs::read_to_string(config.ascii_art_path) {
+        Ok(art) => println!("{}", art),
+        Err(e) => println!("{}", e),
+    }
+
+    info("Initalizing...");
+
+    thread::sleep(time::Duration::from_millis(1000));
+
+    info("Allocating data");
+
+    info("Making blockchain");
+    let blockchain_clone = Arc::clone(&blockchain);
+    sucess();
     
     let chain_loop = thread::spawn(move || {
         loop {
             let timestamp = Utc::now();
     
-            let bloc = build_block("gabriel".to_string(), "tower".to_string(), "ides of march".to_string(), "the theater project".to_string(), 'a', 10, "none".to_string());
-                tx.send(10).unwrap();
-        }
-    });
- 
-    let ui_loop = thread::spawn(move || {
-        loop {
-            println!("{}", rx.recv().unwrap());
-        }
-    });
+            let bloc = build_block("gabriel".to_string(), "tower".to_string(), 
+                "ides of march".to_string(), "the theater project".to_string(), 'a', 10, "none".to_string());
 
-    chain_loop.join().expect("Failed to join chain_loop");
-    ui_loop.join().expect("Failed to join ui_loop");
+            blockchain_clone.lock().unwrap().add_block(bloc);
+            let bLen = blockchain_clone.lock().unwrap().length;
+            
+       }
+    });
+    chain_loop.join().expect("failed to join chain_loop");
 }
-

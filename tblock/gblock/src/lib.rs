@@ -1,6 +1,5 @@
 use std::error::Error;
 use std::result::Result;
-use crate::networking::p2p::{serve, client, Peer};
 use crate::blockchain::chain::BlockChain;
 use crate::ticket::Ticket;
 use crate::blockchain::block::Block;
@@ -9,7 +8,6 @@ use chrono::Utc;
 pub mod networking;
 pub mod blockchain;
 pub mod ticket;
-pub mod codes;
 
 /// Helper to build blocks
 pub fn build_block(fname: String, lname: String, sname: String, tname: String, rlet: char, snum: i64, acom: String) -> Block {

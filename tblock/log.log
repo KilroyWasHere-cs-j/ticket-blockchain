@@ -1,0 +1,254 @@
+warning: unused import: `std::error::Error`
+ --> gblock/src/lib.rs:1:5
+  |
+1 | use std::error::Error;
+  |     ^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `std::result::Result`
+ --> gblock/src/lib.rs:2:5
+  |
+2 | use std::result::Result;
+  |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Deserialize` and `Serialize`
+ --> gblock/src/blockchain/chain.rs:1:13
+  |
+1 | use serde::{Serialize, Deserialize};
+  |             ^^^^^^^^^  ^^^^^^^^^^^
+
+warning: unused variable: `to_hash`
+  --> gblock/src/blockchain/block.rs:31:26
+   |
+31 |     pub fn generate_hash(to_hash: String) -> String {
+   |                          ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_hash`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `genesis_block`
+  --> gblock/src/blockchain/chain.rs:22:13
+   |
+22 |         let genesis_block = Block::new(0, genesis_chain, String::from("0"), 0);
+   |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_genesis_block`
+
+warning: unused variable: `hash`
+  --> gblock/src/blockchain/chain.rs:45:28
+   |
+45 |     pub fn validate(&self, hash: String) -> bool{
+   |                            ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `timestamp`
+  --> gblock/src/lib.rs:20:9
+   |
+20 |     let timestamp = Utc::now();
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_timestamp`
+
+warning: unused variable: `action`
+  --> gblock/src/lib.rs:24:9
+   |
+24 |     let action = blockchain.add_block(bloc);
+   |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_action`
+
+warning: `gblock` (lib) generated 8 warnings (run `cargo fix --lib -p gblock` to apply 3 suggestions)
+   Compiling tblock v0.1.0 (/home/gabrielt/Git/ticket-blockchain/tblock)
+error: path separator must be a double colon
+ --> src/app.rs:2:10
+  |
+2 | use std:::sync::Arc;
+  |          ^
+  |
+help: use a double colon instead
+  |
+2 - use std:::sync::Arc;
+2 + use std::sync::Arc;
+  |
+
+warning: unused imports: `ArgAction`, `Command`, `arg`, and `value_parser`
+ --> src/main.rs:8:12
+  |
+8 | use clap::{arg, command, value_parser, ArgAction, Command, Parser};
+  |            ^^^           ^^^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `indicatif::ProgressBar`
+  --> src/main.rs:10:5
+   |
+10 | use indicatif::ProgressBar;
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::time::Duration`
+  --> src/main.rs:11:5
+   |
+11 | use std::time::Duration;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Event` and `self`
+  --> src/main.rs:12:24
+   |
+12 | use crossterm::event::{self, Event};
+   |                        ^^^^  ^^^^^
+
+warning: unused imports: `Frame` and `text::Text`
+  --> src/main.rs:13:15
+   |
+13 | use ratatui::{text::Text, Frame};
+   |               ^^^^^^^^^^  ^^^^^
+
+warning: unused import: `std::io::prelude::*`
+  --> src/main.rs:15:5
+   |
+15 | use std::io::prelude::*;
+   |     ^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Pid`, `Process`, and `System`
+  --> src/main.rs:18:15
+   |
+18 | use sysinfo::{Pid, Process, System};
+   |               ^^^  ^^^^^^^  ^^^^^^
+
+warning: unused import: `sysinfo::get_current_pid`
+  --> src/main.rs:19:5
+   |
+19 | use sysinfo::get_current_pid;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `Rect` and `Stylize`
+ --> src/app.rs:5:24
+  |
+5 | use ratatui::prelude::{Rect, Stylize};
+  |                        ^^^^  ^^^^^^^
+
+warning: unused import: `ratatui::widgets::canvas::Canvas`
+  --> src/app.rs:15:5
+   |
+15 | use ratatui::widgets::canvas::Canvas;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ratatui::symbols::Marker`
+  --> src/app.rs:16:5
+   |
+16 | use ratatui::symbols::Marker;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ratatui::widgets::canvas::Points`
+  --> src/app.rs:17:5
+   |
+17 | use ratatui::widgets::canvas::Points;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ratatui::style::Color`
+  --> src/app.rs:18:5
+   |
+18 | use ratatui::style::Color;
+   |     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `ratatui::widgets::block::Position`
+  --> src/app.rs:19:5
+   |
+19 | use ratatui::widgets::block::Position;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `info` and `warn`
+  --> src/app.rs:27:11
+   |
+27 | use log::{info, warn};
+   |           ^^^^  ^^^^
+
+warning: unused variable: `rx`
+  --> src/app.rs:51:59
+   |
+51 |     pub fn run(&mut self, terminal: &mut DefaultTerminal, rx: &std::sync::mpsc::Receiver<&Arc<Mutex<SharedData>>>) -> Result<(), Box<dyn ...
+   |                                                           ^^ help: if this is intentional, prefix it with an underscore: `_rx`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: variable `debug` is assigned to, but never used
+  --> src/main.rs:64:13
+   |
+64 |     let mut debug: u8 = 0;
+   |             ^^^^^
+   |
+   = note: consider using `_debug` instead
+
+warning: value assigned to `ui` is never read
+  --> src/main.rs:65:13
+   |
+65 |     let mut ui: u8 = 0;
+   |             ^^
+   |
+   = help: maybe it is overwritten before being read?
+   = note: `#[warn(unused_assignments)]` on by default
+
+warning: value assigned to `debug` is never read
+  --> src/main.rs:84:16
+   |
+84 |         0 => { debug = 0; println!("Debug mode is off"); },
+   |                ^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `debug` is never read
+  --> src/main.rs:85:16
+   |
+85 |         1 => { debug = 1; println!("Debug mode is kinda on"); },
+   |                ^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `debug` is never read
+  --> src/main.rs:86:16
+   |
+86 |         2 => { debug = 2; println!("Debug mode is on"); },
+   |                ^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: value assigned to `debug` is never read
+  --> src/main.rs:87:16
+   |
+87 |         _ => { debug = 255; println!("Bro what you try'n do"); },
+   |                ^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+
+warning: unused variable: `ui_loop`
+   --> src/main.rs:136:13
+    |
+136 |         let ui_loop = thread::spawn(move || {
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_ui_loop`
+
+warning: unused variable: `timestamp`
+   --> src/main.rs:122:17
+    |
+122 |             let timestamp = Utc::now();
+    |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_timestamp`
+
+warning: unused variable: `app`
+   --> src/main.rs:138:17
+    |
+138 |             let app = App::new().run(&mut terminal, &rx).unwrap();
+    |                 ^^^ help: if this is intentional, prefix it with an underscore: `_app`
+
+error[E0597]: `shareddata_clone` does not live long enough
+   --> src/main.rs:130:21
+    |
+105 |     let (tx, rx) = mpsc::channel(); 
+    |          -- lifetime `'1` appears in the type of `tx`
+...
+118 |     let shareddata_clone = Arc::clone(&shareddata);
+    |         ---------------- binding `shareddata_clone` declared here
+...
+130 |             tx.send(&shareddata_clone).unwrap();
+    |             --------^^^^^^^^^^^^^^^^^-
+    |             |       |
+    |             |       borrowed value does not live long enough
+    |             argument requires that `shareddata_clone` is borrowed for `'1`
+131 |        }
+132 |     });
+    |     - `shareddata_clone` dropped here while still borrowed
+
+For more information about this error, try `rustc --explain E0597`.
+warning: `tblock` (bin "tblock") generated 25 warnings
+error: could not compile `tblock` (bin "tblock") due to 2 previous errors; 25 warnings emitted

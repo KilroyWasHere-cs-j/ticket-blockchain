@@ -16,7 +16,7 @@ pub struct Block {
 impl Block {
     pub fn new(index: usize, payload: Ticket, previous_hash: String, nounce: usize) -> Self {
         let timestamp = Utc::now().timestamp() as usize;
-        let hash = "ah".to_string();
+        let hash = "Init".to_string();
 
         Block {
             index,
