@@ -1,0 +1,11 @@
+/home/gabrielt/Git/ticket-blockchain/tblock/target/debug/deps/libconsole-c1fca0c90b6dff87.rmeta: /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/lib.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/common_term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/kb.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/unix_term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/utils.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/ansi.rs
+
+/home/gabrielt/Git/ticket-blockchain/tblock/target/debug/deps/console-c1fca0c90b6dff87.d: /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/lib.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/common_term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/kb.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/unix_term.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/utils.rs /home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/ansi.rs
+
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/lib.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/common_term.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/kb.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/term.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/unix_term.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/utils.rs:
+/home/gabrielt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/console-0.15.10/src/ansi.rs:

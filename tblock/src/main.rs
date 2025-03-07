@@ -19,7 +19,7 @@ use std::sync::Mutex;
 use std::borrow::Cow;
 
 mod utils;
-use crate::utils::{info, sucess};
+use crate::utils::{info, sucess, prompt_for_new_block};
 
 lazy_static! {
     
@@ -102,17 +102,14 @@ async fn main() {
     info("Making blockchain");
     let blockchain_clone = Arc::clone(&blockchain);
     sucess();
-    
+
+    info("The system will enter CLI interaction");
+
     let chain_loop = thread::spawn(move || {
         loop {
-            let timestamp = Utc::now();
-    
-            let bloc = build_block("gabriel".to_string(), "tower".to_string(), 
-                "ides of march".to_string(), "the theater project".to_string(), 'a', 10, "none".to_string());
-
-            blockchain_clone.lock().unwrap().add_block(bloc);
-            let bLen = blockchain_clone.lock().unwrap().length;
-            
+            prompt_for_new_block();
+            //blockchain_clone.lock().unwrap().add_block(bloc);
+            //info("A block was added to the chain");
        }
     });
     chain_loop.join().expect("failed to join chain_loop");
